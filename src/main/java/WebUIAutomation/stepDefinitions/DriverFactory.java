@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import WebUIAutomation.pageObjects.HomePage;
@@ -62,7 +63,19 @@ public class DriverFactory {
 					driver.manage().window().maximize();
 				}
 				break;
+		case "safari":
+			// code
+			if (null == driver) {
+				System.out.println("Opening Safari");
+//				System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER_DIRECTORY);
+				// CHROME OPTIONS
+				driver = new SafariDriver();
+				System.out.println("Driver: " + driver);
+				driver.manage().window().maximize();
+				System.out.println("Chrome Opened");
 			}
+			break;
+		}
 		} catch (Exception e) {
 			System.out.println("Unable to load browser: " + e.getMessage());
 		} finally {
